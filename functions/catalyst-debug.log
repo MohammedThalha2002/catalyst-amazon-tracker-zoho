@@ -1,0 +1,55 @@
+[debug] [2024-02-21T09:47:46.439Z] : 
+[debug] [2024-02-21T09:47:46.440Z] : ----------------------------------------------------------------------
+[debug] [2024-02-21T09:47:46.440Z] : Command:      /opt/homebrew/Cellar/node/21.6.1/bin/node /opt/homebrew/bin/catalyst serve
+[debug] [2024-02-21T09:47:46.441Z] : CLI Version:  1.17.3
+[debug] [2024-02-21T09:47:46.441Z] : Platform:     darwin
+[debug] [2024-02-21T09:47:46.441Z] : Node Version: v21.6.1
+[debug] [2024-02-21T09:47:46.441Z] : Time:         Wed Feb 21 2024 15:17:46 GMT+0530 (India Standard Time)
+[debug] [2024-02-21T09:47:46.441Z] : ----------------------------------------------------------------------
+[debug] [2024-02-21T09:47:46.441Z] : 
+[debug] [2024-02-21T09:47:46.775Z] : > authorizing via signed-in user option
+[debug] [2024-02-21T09:47:46.775Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.webapp.ALL","ZohoCatalyst.pdfshot.execute"]
+[debug] [2024-02-21T09:47:46.781Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068 
+
+[debug] [2024-02-21T09:47:47.643Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 21 Feb 2024 09:47:47 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=ba2a1b22f2a5e14b0d2647f7e38884fc; Path=/","ZD_CSRF_TOKEN=54bdfc27-af71-405f-addc-e276906a64fd;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=54bdfc27-af71-405f-addc-e276906a64fd;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+
+[debug] [2024-02-21T09:47:47.648Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068/environment 
+
+[debug] [2024-02-21T09:47:48.078Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 21 Feb 2024 09:47:48 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=04d9a2d1e2e86744f9516a3e9f805f56; Path=/","ZD_CSRF_TOKEN=d12b47d0-0c1d-42ec-b295-23c03fa058bc;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=d12b47d0-0c1d-42ec-b295-23c03fa058bc;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+
+[debug] [2024-02-21T09:47:48.433Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068/function 
+Query params: {"type":"basicio,event,cron,applogic,integration,browser_logic"}
+
+[debug] [2024-02-21T09:47:48.766Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Wed, 21 Feb 2024 09:47:48 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=bbdfb771565421abbe10f7a180903d28; Path=/","ZD_CSRF_TOKEN=55a96309-3188-4e6b-81ff-1bcf8c96870e;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=55a96309-3188-4e6b-81ff-1bcf8c96870e;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+
+[debug] [2024-02-21T09:47:48.769Z] : unknown eol undefined hence skipping check
+[info] [2024-02-21T09:47:49.775Z] : 
+[info] [2024-02-21T09:47:49.775Z] :  >>>>>>>>>>>>> AdvancedIO <<<<<<<<<<<< 
+[info] [2024-02-21T09:47:49.775Z] : ℹ trackazon_function: http://localhost:3000/server/trackazon_function/
+[info] [2024-02-21T09:47:49.775Z] : 
+[info] [2024-02-21T09:50:59.604Z] : 
+change of queries/auth.queries.js in trackazon_function detected. Preparing your function, please wait...
+[error] [2024-02-21T09:51:01.100Z] : ✖ An unexpected error has occurred.
+[debug] [2024-02-21T09:51:01.100Z] : Error Stack: CatalystError: An unexpected error has occurred.
+    at exports.default (/opt/homebrew/lib/node_modules/zcatalyst-cli/lib/errorOut.js:12:17)
+    at process.<anonymous> (/opt/homebrew/lib/node_modules/zcatalyst-cli/lib/bin/catalyst.js:90:28)
+    at process.emit (node:events:519:28)
+    at process.processEmit [as emit] (/opt/homebrew/lib/node_modules/zcatalyst-cli/node_modules/signal-exit/index.js:199:34)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+[debug] [2024-02-21T09:51:01.100Z] : Original Error: Error: Error: Cannot copy '../semver/bin/semver.js' to a subdirectory of itself, '../semver/bin/semver.js'.
+    at /opt/homebrew/lib/node_modules/zcatalyst-cli/node_modules/fs-extra/lib/copy/copy.js:213:21
+    at FSReqCallback.oncomplete (node:fs:194:23)
+    at exports.default (/opt/homebrew/lib/node_modules/zcatalyst-cli/lib/errorOut.js:14:23)
+    at process.<anonymous> (/opt/homebrew/lib/node_modules/zcatalyst-cli/lib/bin/catalyst.js:90:28)
+    at process.emit (node:events:519:28)
+    at process.processEmit [as emit] (/opt/homebrew/lib/node_modules/zcatalyst-cli/node_modules/signal-exit/index.js:199:34)
+    at emit (node:internal/process/promises:150:20)
+    at processPromiseRejections (node:internal/process/promises:284:27)
+    at process.processTicksAndRejections (node:internal/process/task_queues:96:32)
+[debug] [2024-02-21T09:51:01.101Z] : Error Status: 500
+[info] [2024-02-21T09:51:01.101Z] : Kindly contact Catalyst support [support@zohocatalyst.com] if you need any further assistance

@@ -47,8 +47,8 @@ const postTrackDetailsDirectly = async (req, res) => {
 const getTrackDetails = async (req, res) => {
   const email = req.params?.email;
   const page = parseInt(req.params?.page) || 1;
-  const limit = 1;
-  const offset = (page-1)*limit
+  const limit = 2;
+  const offset = ((page-1)*limit)+1
 
   const dataQuery = email
     ? `SELECT * FROM Track WHERE email = '${email}' LIMIT ${limit} OFFSET ${offset};`

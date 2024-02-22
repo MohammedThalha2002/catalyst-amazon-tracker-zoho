@@ -1,32 +1,32 @@
-[debug] [2024-02-21T12:50:49.583Z] : 
-[debug] [2024-02-21T12:50:49.584Z] : ----------------------------------------------------------------------
-[debug] [2024-02-21T12:50:49.584Z] : Command:      /opt/homebrew/Cellar/node/21.6.1/bin/node /opt/homebrew/bin/catalyst serve
-[debug] [2024-02-21T12:50:49.584Z] : CLI Version:  1.17.3
-[debug] [2024-02-21T12:50:49.585Z] : Platform:     darwin
-[debug] [2024-02-21T12:50:49.585Z] : Node Version: v21.6.1
-[debug] [2024-02-21T12:50:49.585Z] : Time:         Wed Feb 21 2024 18:20:49 GMT+0530 (India Standard Time)
-[debug] [2024-02-21T12:50:49.585Z] : ----------------------------------------------------------------------
-[debug] [2024-02-21T12:50:49.585Z] : 
-[debug] [2024-02-21T12:50:49.818Z] : > authorizing via signed-in user option
-[debug] [2024-02-21T12:50:49.818Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.webapp.ALL","ZohoCatalyst.pdfshot.execute"]
-[debug] [2024-02-21T12:50:49.822Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068 
+[debug] [2024-02-22T04:26:14.448Z] : 
+[debug] [2024-02-22T04:26:14.449Z] : ----------------------------------------------------------------------
+[debug] [2024-02-22T04:26:14.449Z] : Command:      /opt/homebrew/Cellar/node/21.6.1/bin/node /opt/homebrew/bin/catalyst serve
+[debug] [2024-02-22T04:26:14.449Z] : CLI Version:  1.17.3
+[debug] [2024-02-22T04:26:14.450Z] : Platform:     darwin
+[debug] [2024-02-22T04:26:14.450Z] : Node Version: v21.6.1
+[debug] [2024-02-22T04:26:14.450Z] : Time:         Thu Feb 22 2024 09:56:14 GMT+0530 (India Standard Time)
+[debug] [2024-02-22T04:26:14.450Z] : ----------------------------------------------------------------------
+[debug] [2024-02-22T04:26:14.450Z] : 
+[debug] [2024-02-22T04:26:14.784Z] : > authorizing via signed-in user option
+[debug] [2024-02-22T04:26:14.784Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.functions.ALL","ZohoCatalyst.functions.EXECUTE","ZohoCatalyst.webapp.ALL","ZohoCatalyst.pdfshot.execute"]
+[debug] [2024-02-22T04:26:14.789Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068 
 
-[debug] [2024-02-21T12:50:50.607Z] : <<<< HTTP RESPONSE : 200
-Response Headers: {"server":"ZGS","date":"Wed, 21 Feb 2024 12:50:50 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=ba2a1b22f2a5e14b0d2647f7e38884fc; Path=/","ZD_CSRF_TOKEN=117bd250-0618-407f-8512-927bdb3fad80;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=117bd250-0618-407f-8512-927bdb3fad80;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+[debug] [2024-02-22T04:26:15.691Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 22 Feb 2024 04:26:15 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=63dd9cf89a6678b816d9580ec827ee61; Path=/","ZD_CSRF_TOKEN=ee4cbcb2-e318-4aaa-86ec-2274537b342a;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=ee4cbcb2-e318-4aaa-86ec-2274537b342a;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
 
-[debug] [2024-02-21T12:50:50.613Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068/environment 
+[debug] [2024-02-22T04:26:15.696Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068/environment 
 
-[debug] [2024-02-21T12:50:51.029Z] : <<<< HTTP RESPONSE : 200
-Response Headers: {"server":"ZGS","date":"Wed, 21 Feb 2024 12:50:50 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=63dd9cf89a6678b816d9580ec827ee61; Path=/","ZD_CSRF_TOKEN=06b3a097-5f71-4227-a030-a0309c91e5aa;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=06b3a097-5f71-4227-a030-a0309c91e5aa;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+[debug] [2024-02-22T04:26:16.036Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 22 Feb 2024 04:26:15 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=04d9a2d1e2e86744f9516a3e9f805f56; Path=/","ZD_CSRF_TOKEN=50cca691-8acf-4443-9108-227e02fbcc0a;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=50cca691-8acf-4443-9108-227e02fbcc0a;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
 
-[debug] [2024-02-21T12:50:51.096Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068/function 
+[debug] [2024-02-22T04:26:16.142Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.com/baas/v1/project/21459000000006068/function 
 Query params: {"type":"basicio,event,cron,applogic,integration,browser_logic"}
 
-[debug] [2024-02-21T12:50:51.759Z] : <<<< HTTP RESPONSE : 200
-Response Headers: {"server":"ZGS","date":"Wed, 21 Feb 2024 12:50:51 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=04d9a2d1e2e86744f9516a3e9f805f56; Path=/","ZD_CSRF_TOKEN=2bc2cda6-ae21-4d10-8194-3e9aec927270;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=2bc2cda6-ae21-4d10-8194-3e9aec927270;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
+[debug] [2024-02-22T04:26:16.464Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Thu, 22 Feb 2024 04:26:16 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["46512fd555=bbdfb771565421abbe10f7a180903d28; Path=/","ZD_CSRF_TOKEN=9ecb882b-cd4a-4f77-9010-29769172deba;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=9ecb882b-cd4a-4f77-9010-29769172deba;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=63072000"}
 
-[debug] [2024-02-21T12:50:51.765Z] : unknown eol undefined hence skipping check
-[info] [2024-02-21T12:50:52.701Z] : 
-[info] [2024-02-21T12:50:52.701Z] :  >>>>>>>>>>>>> AdvancedIO <<<<<<<<<<<< 
-[info] [2024-02-21T12:50:52.701Z] : ℹ trackazon_function: http://localhost:3000/server/trackazon_function/
-[info] [2024-02-21T12:50:52.702Z] : 
+[debug] [2024-02-22T04:26:16.468Z] : unknown eol undefined hence skipping check
+[info] [2024-02-22T04:26:17.447Z] : 
+[info] [2024-02-22T04:26:17.447Z] :  >>>>>>>>>>>>> AdvancedIO <<<<<<<<<<<< 
+[info] [2024-02-22T04:26:17.447Z] : ℹ trackazon_function: http://localhost:3000/server/trackazon_function/
+[info] [2024-02-22T04:26:17.447Z] : 

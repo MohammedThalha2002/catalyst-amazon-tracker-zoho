@@ -1,4 +1,3 @@
-const UserModel = require("../model/UserModel");
 const { findUserByEmail } = require("../queries/auth.queries");
 
 async function checkUser(req, res, next) {

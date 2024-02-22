@@ -23,14 +23,6 @@ router.get("/", (req, res) => {
   res.send("Tracker runnning successfully");
 });
 
-// POST - ROOT TEST
-router.post("/", (req, res) => {
-  console.log(req.headers);
-  console.log(req.body);
-  console.log(req.params);
-  res.send("Tracker runnning successfully");
-});
-
 // GET ALL
 router.get("/track-details", (req, res) => {
   getAllTrackDetails(req, res);
@@ -109,15 +101,10 @@ router.post("/get-by-url", (req, res) => {
 // TO RUN CRON JOB
 router.get("/run-cron-job", async (req, res) => {
   try {
-    await updateTrackPricesPeriodically(res);
+    await updateTrackPricesPeriodically(req, res);
   } catch (error) {
     res.send(error);
   }
-});
-
-router.get("/testing", async (req, res) => {
-  await findUserByEmail(req, "thalha@gamil.com");
-  res.send("RESULT")
 });
 
 module.exports = router;

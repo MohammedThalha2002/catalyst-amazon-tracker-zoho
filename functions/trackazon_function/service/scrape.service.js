@@ -1,6 +1,5 @@
 const cheerio = require("cheerio");
 const { default: axios } = require("axios");
-const TrackModel = require("../model/TrackModel");
 var catalyst = require("zcatalyst-sdk-node");
 
 const scrape = async (url, email, exp_price, req, res) => {

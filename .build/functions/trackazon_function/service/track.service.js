@@ -1,4 +1,3 @@
-const TrackModel = require("../model/TrackModel");
 const cronJob = require("./cronjob.service");
 const scrape = require("./scrape.service");
 var catalyst = require("zcatalyst-sdk-node");
@@ -43,7 +42,7 @@ const postTrackDetailsDirectly = async (req, res) => {
   }
 };
 
-
+// DONE & CHECKED
 const getTrackDetails = async (req, res) => {
   const email = req.params?.email;
   const page = parseInt(req.params?.page) || 1;
@@ -59,7 +58,7 @@ const getTrackDetails = async (req, res) => {
   let zcql = app.zcql();
 
   try {
-    const dataRes = await zcql.executeZCQLQuery(dataQuery);
+    let dataRes = await zcql.executeZCQLQuery(dataQuery);
     const countResults = await zcql.executeZCQLQuery(countQuery);
     //
     const totalCount = countResults[0].Track.ROWID;
@@ -72,6 +71,9 @@ const getTrackDetails = async (req, res) => {
       hasPrevPage : hasPrevPage,
       hasNextPage : hasNextPage,
     }
+    // alter dataRes
+    dataRes = dataRes.map(item => item.Track)
+    dataRes.forEach(item => delete item.Track);
 
     res.status(200).json({
       status: "success",
@@ -85,78 +87,62 @@ const getTrackDetails = async (req, res) => {
       status: "failed",
     });
   }
-  // if (email) {
-  //   try {
-  //     const details = await TrackModel.paginate(
-  //       {
-  //         email: email,
-  //       },
-  //       options
-  //     );
-  //     details.status = "success";
-  //     res.send(details);
-  //   } catch (error) {
-  //     res.status(400).json({
-  //       msg: "Failed to fetch the tracking data",
-  //       error: error,
-  //       status: "failed",
-  //     });
-  //   }
-  // } else {
-  //   try {
-  //     const details = await TrackModel.paginate({}, options);
-  //     res.send(details);
-  //   } catch (error) {
-  //     res
-  //       .status(400)
-  //       .json({ msg: "Failed to fetch the tracking data", error: error });
-  //   }
-  // }
 };
 
+// DONE & CHECKED
 const getAllTrackDetails = async (req, res) => {
   const email = req.params?.email;
-  const page = 1;
+  const limit = 10;
 
-  const options = {
-    page: page,
-    limit: 10,
-  };
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
 
-  if (email) {
+
+  const dataQuery = email
+    ? `SELECT * FROM Track WHERE email = '${email}' LIMIT ${limit};`
+    : `SELECT * FROM Track;`;
+
     try {
-      const details = await TrackModel.paginate(
-        {
-          email: email,
-        },
-        options
-      );
-      res.send(details);
+      let dataRes = await zcql.executeZCQLQuery(dataQuery);
+  
+      // alter dataRes
+      dataRes = dataRes.map(item => item.Track)
+      dataRes.forEach(item => delete item.Track);
+  
+      res.status(200).json({
+        status: "success",
+        docs: dataRes
+      });
     } catch (error) {
+      console.log(error);
       res.status(400).json({
         msg: "Failed to fetch the tracking data",
         error: error,
+        status: "failed",
       });
     }
-  } else {
-    try {
-      const details = await TrackModel.find({});
-      res.send(details);
-    } catch (error) {
-      res
-        .status(400)
-        .json({ msg: "Failed to fetch the tracking data", error: error });
-    }
-  }
 };
 
+// DONE & CHECKED
 const getTrackDetailsById = async (req, res) => {
   const id = req.params?.id;
 
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const dataQuery = `SELECT * FROM Track WHERE ROWID = '${id}';`
+
   try {
-    const details = await TrackModel.findById({ _id: id });
-    console.log(id, details);
-    res.send(details);
+    let dataRes = await zcql.executeZCQLQuery(dataQuery);
+     // alter dataRes
+     dataRes = dataRes.map(item => item.Track)
+     dataRes.forEach(item => delete item.Track);
+ 
+     res.status(200).json({
+       status: "success",
+       docs: dataRes
+     });
+
   } catch (error) {
     res.status(400).json({
       msg: "Failed to fetch the tracking data",
@@ -165,38 +151,50 @@ const getTrackDetailsById = async (req, res) => {
   }
 };
 
+// DONE & CHECKED
 const updateExpectedPrices = async (req, res) => {
   const id = req.params?.id;
   const exp_price = parseInt(req.params?.price);
 
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const updateQuery = `
+      UPDATE Track
+      SET exp_price = ${exp_price}
+      WHERE ROWID = '${id}';
+    `;
+
   try {
-    await TrackModel.findByIdAndUpdate(id, {
-      $set: {
-        exp_price: exp_price,
-      },
-    });
+    await zcql.executeZCQLQuery(updateQuery);
     console.log(exp_price, "updated successfully");
     res
       .status(200)
       .json({ msg: "Price updated successfully", status: "success" });
   } catch (error) {
     res.status(400).json({
-      msg: "Failed to update the tracking data",
+      msg: "Failed to update the price",
       error: error,
       staus: "failed",
     });
   }
 };
 
+// DONE & CHECKED
 const enableTracking = async (req, res) => {
   const id = req.params?.id;
 
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const updateQuery = `
+      UPDATE Track
+      SET track_enabled = true
+      WHERE ROWID = '${id}';
+    `;
+
   try {
-    await TrackModel.findByIdAndUpdate(id, {
-      $set: {
-        track_enabled: true,
-      },
-    });
+    await zcql.executeZCQLQuery(updateQuery);
     res
       .status(200)
       .json({ msg: "Track enabled successfully", status: "success" });
@@ -209,18 +207,23 @@ const enableTracking = async (req, res) => {
   }
 };
 
+// DONE & CHECKED
 const disableTracking = async (req, res) => {
   const id = req.params?.id;
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const updateQuery = `
+      UPDATE Track
+      SET track_enabled = false
+      WHERE ROWID = '${id}';
+    `;
 
   try {
-    await TrackModel.findByIdAndUpdate(id, {
-      $set: {
-        track_enabled: false,
-      },
-    });
+    await zcql.executeZCQLQuery(updateQuery);
     res
       .status(200)
-      .json({ msg: "Track enabled successfully", status: "success" });
+      .json({ msg: "Track disabled successfully", status: "success" });
   } catch (error) {
     res.status(400).json({
       msg: "Failed to update the tracking data",
@@ -230,11 +233,19 @@ const disableTracking = async (req, res) => {
   }
 };
 
+// DONE & CHECKED
 const deleteTrack = async (req, res) => {
   const id = req.params?.id;
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const deleteQuery = `
+      DELETE FROM Track
+      WHERE ROWID = '${id}';
+    `;
 
   try {
-    await TrackModel.deleteOne({ _id: id });
+    await zcql.executeZCQLQuery(deleteQuery);
     console.log("Deleted successfully");
     res
       .status(200)
@@ -248,15 +259,24 @@ const deleteTrack = async (req, res) => {
   }
 };
 
+// DONE & CHECKED
 const deleteAllTracks = async (req, res) => {
   const email = req.params?.email;
 
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const deleteQuery = `
+      DELETE FROM Track
+      WHERE email = '${email}';
+    `;
+
   try {
-    await TrackModel.deleteMany({ email: email });
+    await zcql.executeZCQLQuery(deleteQuery);
     console.log("Deleted successfully");
     res
       .status(200)
-      .json({ msg: "Product Deleted successfully", status: "success" });
+      .json({ msg: "Products Deleted successfully", status: "success" });
   } catch (error) {
     res.status(400).json({
       msg: "Failed to delete the tracking data",
@@ -266,6 +286,7 @@ const deleteAllTracks = async (req, res) => {
   }
 };
 
+// DONE & CHECKED
 const getProductDetailsByUrl = async (req,res) => {
   let url = req.body.url;
   let email = "";
@@ -273,10 +294,19 @@ const getProductDetailsByUrl = async (req,res) => {
   await scrape(url, email, exp_price, req, res);
 }
 
-const updateTrackPricesPeriodically = async(req,res) => {
+const updateTrackPricesPeriodically = async(req, res) => {
+  var app = catalyst.initialize(req);
+  let zcql = app.zcql();
+
+  const dataQuery = `SELECT * FROM Track;`;
   try {
-    const details = await TrackModel.find({});
-    await cronJob(details);
+    let dataRes = await zcql.executeZCQLQuery(dataQuery);
+
+    // alter dataRes
+    dataRes = dataRes.map(item => item.Track)
+    dataRes.forEach(item => delete item.Track);
+    
+    await cronJob(dataRes, zcql);
     res.send("Scraped");
   } catch (error) {
     console.log(error);

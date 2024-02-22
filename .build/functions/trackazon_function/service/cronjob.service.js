@@ -1,17 +1,14 @@
 const cheerio = require("cheerio");
-const TrackModel = require("../model/TrackModel");
 const { default: axios } = require("axios");
-const UserModel = require("../model/UserModel");
-require("dotenv").config();
 
-async function cronJob(details) {
+async function cronJob(details, zcql) {
   console.log("Scraping started");
   for (const detail of details) {
-    await findPrice(detail);
+    await findPrice(detail, zcql);
   }
 }
 
-async function findPrice(detail) {
+async function findPrice(detail, zcql) {
   // url, email, exp_price;
   console.log(detail.title);
   const url = detail.url;
@@ -27,7 +24,7 @@ async function findPrice(detail) {
       console.log(curr_price, inStock, rating);
       // updating the db on price or rating varied
       if (curr_price != detail.curr_price) {
-        await updatePriceDetails(detail._id, curr_price);
+        await updatePriceDetails(detail._id, curr_price, zcql);
       } else {
         console.log("Same price");
       }
@@ -37,7 +34,7 @@ async function findPrice(detail) {
         console.log("price drop alert");
         console.log("Curr Price : ", curr_price);
         console.log("Exp Price : ", exp_price);
-        notifyUser(detail);
+        notifyUser(detail, zcql);
       }
     });
   } catch (error) {
@@ -50,30 +47,32 @@ const getHTML = async (url) => {
   return html;
 };
 
-async function updatePriceDetails(id, curr_price) {
+async function updatePriceDetails(id, curr_price, zcql) {
+  const updateQuery = `
+      UPDATE Track
+      SET curr_price = ${curr_price}
+      WHERE ROWID = '${id}';
+    `;
+
   try {
-    await TrackModel.findByIdAndUpdate(id, {
-      $set: {
-        curr_price: curr_price,
-      },
-    });
+    await zcql.executeZCQLQuery(updateQuery);
     console.log(curr_price, "price updated successfully");
   } catch (err) {
     console.log(err);
   }
 }
 
-async function notifyUser(body) {
+async function notifyUser(body, zcql) {
   console.log(body);
   let email = body.email;
 
-  let user = await UserModel.find({
-    email: email,
-  });
-  user = user[0];
-  console.log(user.email);
-  let userId = user.userId;
-  let token = user.token;
+  let query = `select * from users where email = '${email}'`;
+  let queryRes = await zcql.executeZCQLQuery(query);
+  const result = queryRes[0].Users
+  //
+  console.log(result.email);
+  let userId = result.userId;
+  let token = result.token;
 
   const sandbox = `https://cliq.zoho.com/company/${userId}/api/v2/applications/2305843009213699174/incoming?appkey=sbx-NTIyMy0yNDAxZDViMi02YTVhLTQyZGUtOWNhYy1hNDc0NDg2NzU5M2Q=`;
   await axios

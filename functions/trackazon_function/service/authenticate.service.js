@@ -1,4 +1,3 @@
-const UserModel = require("../model/UserModel");
 const { findUserByEmail } = require("../queries/auth.queries");
 var catalyst = require("zcatalyst-sdk-node");
 

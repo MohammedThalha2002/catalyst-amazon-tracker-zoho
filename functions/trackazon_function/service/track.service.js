@@ -17,8 +17,8 @@ const postTrackDetailsDirectly = async (req, res) => {
   data.title = data.title.trim().replace(/[|/&;$%@"<>()+,]/g, "");
   data.features = data.features.replace(/\\"/g, '"');
   data.features = JSON.parse(data.features);
-  data.features[0] = data.features[0].replace("//", "");
-  data.features[1] = data.features[1].replace("//", "");
+  data.features[0] = data.features[0].replace("//", "").substring(0,95) + "...";
+  data.features[1] = data.features[1].replace("//", "").substring(0,95) + "...";
   try {
     var app = catalyst.initialize(req);
     let zcql = app.zcql();

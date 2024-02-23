@@ -35,6 +35,7 @@ const scrape = async (url, email, exp_price, req, res) => {
               .text()
               .trim()
               .replace(/[|&;$%@"<>()+,]/g, "")
+              .substring(0,95) + "..."
           );
         }
       });
